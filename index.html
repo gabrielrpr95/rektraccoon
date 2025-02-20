@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="favicon" type="image/x-icon" href="assets/guaxinim_zica_5-removebg-preview.png">
+    <link rel="icon" type="image/png" href="assets/guaxinim_zica_5-removebg-preview.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RektRaccoon | $REKT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@1.14.1/dist/full.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #0a0a1f;
+            color: #00ff9d;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, p {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .hero-bg {
+            background: linear-gradient(45deg, #0a0a1f 0%, #1a1a3f 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Novo estilo para o background com imagem */
+        .hero-bg::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('assets/guaxinim zica 12.png'); /* Substitua pela URL da sua imagem */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15; /* Ajuste a transparência aqui (0.0 a 1.0) */
+            z-index: 0;
+        }
+
+        .hero-bg::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 157, 0.1) 0px,
+                rgba(0, 255, 157, 0) 1px,
+                rgba(0, 255, 157, 0) 10px
+            );
+            animation: scanline 8s linear infinite;
+            z-index: 1;
+        }
+
+        /* Garantir que o conteúdo fique acima do background */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100%); }
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00ff9d, #0ff);
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+        }
+
+        .glass-box {
+            background: rgba(10, 10, 31, 0.7);
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Resto dos estilos permanecem iguais */
+        .rotating-banner-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            height: 155px;
+            border-top: 2px solid #00ff9d;
+            border-bottom: 2px solid #00ff9d;
+            background: linear-gradient(90deg, #0a0a1f, #1a1a3f);
+        }
+
+        .footer {
+            background: linear-gradient(90deg, #0a0a1f, #1a1a3f);
+            border-top: 2px solid #00ff9d;
+        }
+
+        .section-content {
+            color: #00ff9d;
+            background-color: rgba(10, 10, 31, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            white-space: pre-line;
+        }
+
+        .cyberpunk-button {
+            background: linear-gradient(45deg, #00ff9d, #0ff);
+            color: #0a0a1f;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyberpunk-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+        }
+
+        .cyberpunk-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(0, 255, 157, 0.3),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="overflow-hidden">
+        <div id="progress-bar" class="progress-bar"></div>
+
+        <nav class="fixed w-full navbar shadow-lg z-50" style="background: rgba(10, 10, 31, 0.9);">
+            <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <span class="text-2xl font-bold text-cyan-400">$REKT</span>
+                    <img src="assets/guaxinim_zica_5-removebg-preview.png" alt="Raccoon Logo" class="w-14 h-14">
+                </div>
+                <ul class="flex space-x-8 items-center">
+                    <li><a href="https://x.com/rektraccoongfm" target="_blank" class="cyberpunk-button">
+                        <i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="https://www.gofundmeme.io/memefeed" target="_blank" class="cyberpunk-button">
+                        <i class="fas fa-rocket"></i> BUY $REKT</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section id="home" class="hero-bg h-screen flex flex-col justify-center items-center text-center relative" style="padding-top: 100px;">
+            <div class="hero-content">
+                <div class="glass-box max-w-5xl mx-auto">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">Welcome to RektRaccoon</h1>
+                    <p class="text-xl md:text-2xl mb-8">The First Time-Traveling Raccoon on Solana</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resto do conteúdo permanece igual -->
+        <section id="about" class="py-20" style="background: linear-gradient(45deg, #0a0a1f 0%, #1a1a3f 100%);">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                    <div class="mt-10">
+                        <img src="assets/guaxinim zica 14.png" alt="Raccoon Character" class="w-auto h-auto mx-auto" style="box-shadow: 0 0 30px rgba(0, 255, 157, 0.3);">
+                    </div>
+                    <div class="mt-10">
+                        <div class="section-content">
+                            <p class="text-2xl mb-6">From the neon-lit streets of Securia emerges a cyberpunk raccoon with a mission: navigate the treacherous cryptographic universe on the hunt for the damn ruggers! Armed with advanced blockchain technology and an insatiable thirst for adventure, our time-traveling hero is here to revolutionize the Solana memecoin space! You are safe as a trader with this token! RektRacoon came to save everyone against the biggest scams on planet earth! $REKT TO THE MOON!</p>
+                            <p class="text-xl font-bold glass-box inline-block">
+                                Contract Address: Coming soon.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer py-10">
+            <p class="text-center text-cyan-400">RektRaccoon. All Rights Reserved; 2025.</p>
+        </footer>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app'
+        });
+
+        // Progress bar effect
+        document.addEventListener('DOMContentLoaded', function () {
+            const progressBar = document.getElementById('progress-bar');
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+            window.addEventListener('scroll', function () {
+                const progress = (window.scrollY / totalHeight) * 100;
+                progressBar.style.width = progress + '%';
+            });
+        });
+    </script>
+</body>
+</html>
